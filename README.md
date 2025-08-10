@@ -4,7 +4,7 @@
 
 This project is a technical assessment implementation that recreates core functionalities of VectorShift's main application. The focus was on building a node-based workflow builder with features like node abstraction, dynamic styling, and backend integration for pipeline validation. The implementation showcases modern web development practices and attention to user experience.
 
-**Frontend:** [Live Site URL](https://vectorshift-assignment.vercel.app/)
+**Frontend:** [Live Site URL](https://vectorshift-assignment-eta.vercel.app/)
 
 **Code Repo:** [Repository URL](https://github.com/Gautamsajwan/vectorshift_assignment)
 
@@ -26,8 +26,7 @@ This project is a technical assessment implementation that recreates core functi
   - Tailwind CSS for utility-first styling
   - shadcn/ui for component library
 - **Backend**: FastAPI for Python backend services
-- **Type Safety**: TypeScript for enhanced development
-- **State Management**: React Context API
+- **State Management**: Zustand
 - **Deployment**: Vercel for frontend hosting
 
 ## Implementation Details
