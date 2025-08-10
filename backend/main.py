@@ -10,9 +10,10 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["POST", "GET", "OPTIONS"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
     max_age=86400,
 )
 
@@ -20,7 +21,7 @@ app.add_middleware(
 def read_root():
     return {'Ping': 'Pong'}
 
-@app.options('/pipelines/parse')
+# @app.options('/pipelines/parse')
 @app.post('/pipelines/parse', response_model=PipelineResponse)
 async def parse_pipeline(request: PipelineRequest) -> PipelineResponse:
     print(f"Received request with {len(request.nodes)} nodes and {len(request.edges)} edges")

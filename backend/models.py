@@ -1,45 +1,55 @@
-from typing import List, Optional
+from typing import List, Optional, Any
 from pydantic import BaseModel
 
 class Position(BaseModel):
-    x: float
-    y: float
+    x: float = 0
+    y: float = 0
 
 class Style(BaseModel):
-    strokeWidth: int
-    stroke: str
+    strokeWidth: Optional[int] = None
+    stroke: Optional[str] = None
+    class Config:
+        extra = "allow"
 
 class MarkerEnd(BaseModel):
-    type: str
-    width: int
-    height: int
-    color: str
+    type: Optional[str] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+    color: Optional[str] = None
+    class Config:
+        extra = "allow"
 
 class NodeData(BaseModel):
-    id: str
-    nodeType: str
+    id: Optional[str] = None
+    nodeType: Optional[str] = None
+    class Config:
+        extra = "allow"
 
 class Node(BaseModel):
     id: str
-    type: str
-    position: Position
-    data: NodeData
-    width: int
-    height: int
+    type: Optional[str] = None
+    position: Position = Position()
+    data: NodeData = NodeData()
+    width: Optional[int] = None
+    height: Optional[int] = None
     selected: Optional[bool] = False
     dragging: Optional[bool] = False
+    class Config:
+        extra = "allow"
 
 class Edge(BaseModel):
-    type: str
-    deletable: bool
-    style: Style
-    markerEnd: MarkerEnd
-    animated: bool
-    source: str
-    sourceHandle: str
-    target: str
-    targetHandle: str
     id: str
+    type: Optional[str] = None
+    deletable: Optional[bool] = None
+    style: Optional[Style] = None
+    markerEnd: Optional[MarkerEnd] = None
+    animated: Optional[bool] = False
+    source: str
+    sourceHandle: Optional[str] = None
+    target: str
+    targetHandle: Optional[str] = None
+    class Config:
+        extra = "allow"
 
 class PipelineRequest(BaseModel):
     nodes: List[Node]
